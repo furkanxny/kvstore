@@ -44,7 +44,16 @@ void put(ThreeValues values){
         printf("Can't open the file!\n");
         return;
     }
+    int temp;
+    char value[100];
+    	while(fscanf(pFile, "%d,%99[^\n]", &temp, value) == 2){  
+	      		if(temp == values.key){ 
+		printf("The key is already in the system!\n");
+		return;
+			}
+        }
     fprintf(pFile, "%d,%s\n", values.key, values.value);
+   
     fclose(pFile);
 }
 
@@ -141,7 +150,7 @@ int main(int argc, char** argv) {
         } else if (argv[i][0] == 'a') {
             all();
         } else {
-            
+           printf("bad command"); 
         }
           
 
